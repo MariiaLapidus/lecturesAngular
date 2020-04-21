@@ -5,16 +5,22 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { HelloComponent } from './hello/hello.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { UserResolverService } from './services/user-resolver.service';
 
 
 const routes: Routes = [
-  // {path: 'users' , component: UserComponent}
+  {path: '' , component: HelloComponent},
+  {path: 'users' , component: AllUsersComponent, resolve: {allUsers: UserResolverService}}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    HelloComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
