@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
-import {User} from '../../models/user/user.module';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from '../../models/UserModel';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-user',
@@ -9,11 +11,21 @@ import {User} from '../../models/user/user.module';
 export class UserComponent implements OnInit {
   @Input()
   user: User;
+  @Output()
+  forwardUserData = new EventEmitter();
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
 
+  navigate(user: User) {
+    this.forwardUserData.emit(user);
+    this.router.navigate([user.id, 'posts'], {
+        state: {user},
+        queryParams: {idOfUser: user.id},
+    relativeTo: this.activatedRoute
+    });
+  }
 }

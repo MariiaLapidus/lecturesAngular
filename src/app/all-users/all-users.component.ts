@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../services/user.service';
 import {ActivatedRoute} from '@angular/router';
-import { User } from 'src/models/user/user.module';
+import { User } from 'src/models/UserModel';
 
 @Component({
   selector: 'app-all-users',
@@ -10,6 +10,7 @@ import { User } from 'src/models/user/user.module';
 })
 export class AllUsersComponent implements OnInit {
   users: User[];
+  xxx: any;
 
   constructor(private activatedRoute: ActivatedRoute) {
     console.log(this.activatedRoute.snapshot.data);
@@ -17,5 +18,10 @@ export class AllUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  catchUserData($event: any) {
+    console.log($event);
+    this.xxx = $event;
   }
 }

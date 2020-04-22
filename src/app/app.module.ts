@@ -8,11 +8,15 @@ import { UserComponent } from './user/user.component';
 import { HelloComponent } from './hello/hello.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UserResolverService } from './services/user-resolver.service';
+import { PostComponent } from './post/post.component';
+import { AllPostComponent } from './all-post/all-post.component';
 
 
 const routes: Routes = [
   {path: '' , component: HelloComponent},
-  {path: 'users' , component: AllUsersComponent, resolve: {allUsers: UserResolverService}}
+  {path: 'users' , component: AllUsersComponent, resolve: {allUsers: UserResolverService}, children: [
+      {path:':id/posts', component: AllPostComponent}
+    ]}
 ]
 
 @NgModule({
@@ -20,7 +24,9 @@ const routes: Routes = [
     AppComponent,
     UserComponent,
     HelloComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    PostComponent,
+    AllPostComponent
   ],
   imports: [
     BrowserModule,

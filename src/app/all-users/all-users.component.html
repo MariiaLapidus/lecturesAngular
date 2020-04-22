@@ -2,6 +2,13 @@
 
 <router-outlet></router-outlet>
 <hr>
-<app-user *ngFor="let su of users" [user]="su"></app-user>
+
+<div>
+ <h3>
+  {{xxx?.name}}
+  {{xxx?.email}}
+ </h3>
+</div>
+<app-user *ngFor="let su of users" [user]="su" (forwardUserData)="catchUserData($event)"></app-user>
 
 
