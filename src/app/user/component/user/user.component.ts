@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from '../../models/UserModel';
+import {User} from '../../../../models/UserModel';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
